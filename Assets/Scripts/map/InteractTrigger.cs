@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class InteractTrigger : MonoBehaviour
 {
-        public TextAsset inkJSON; // 绑定剧情文件
+    public TextAsset inkJSON; // 绑定剧情文件
     private bool isPlayerInRange = false;
+    public GameObject hintImage; 
+    public int mapIndex = 0;
+    public bool triggersMapProgress = false;
 
     void Update()
     {
@@ -17,6 +20,11 @@ public class InteractTrigger : MonoBehaviour
             {
                 InkManager_Explore.Instance.StartStory(inkJSON);
                 Debug.Log("已调用InkManager_Explore播放剧情");  // ← 确认调用成功
+                if (hintImage != null)
+                hintImage.SetActive(false); 
+
+                if (triggersMapProgress)
+                MapConditionManager.Instance.MarkExplorationDone(mapIndex);
             }
             else
             {
@@ -31,6 +39,8 @@ public class InteractTrigger : MonoBehaviour
         {
             isPlayerInRange = true;
             Debug.Log("玩家进入互动区域");  // ← 进入触发区
+            if (hintImage != null)
+            hintImage.SetActive(true);
         }
     }
 
@@ -40,6 +50,8 @@ public class InteractTrigger : MonoBehaviour
         {
             isPlayerInRange = false;
             Debug.Log("玩家离开互动区域");  // ← 离开触发区
+            if (hintImage != null)
+            hintImage.SetActive(false);
         }
     }
 }
