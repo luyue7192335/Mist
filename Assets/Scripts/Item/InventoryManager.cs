@@ -56,5 +56,44 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    // public List<string> GetAllItemIds()
+    // {
+    //     var ids = new List<string>();
+    //     foreach (var it in inventoryItems) if (it != null) ids.Add(it.itemId);
+    //     return ids;
+    // }
+
+    // // 通过ID列表重建
+    // public void SetByItemIds(List<string> ids)
+    // {
+    //     inventoryItems.Clear();
+    //     if (ids == null) return;
+    //     foreach (var id in ids)
+    //     {
+    //         var item = ItemDatabase.Instance.GetItemById(id); // 见下
+    //         if (item != null) inventoryItems.Add(item);
+    //     }
+    // }
+
+    public List<string> GetAllItemIds()
+    {
+        var ids = new List<string>();
+        foreach (var it in inventoryItems)
+            if (it != null && !string.IsNullOrEmpty(it.itemId))
+                ids.Add(it.itemId);
+        return ids;
+    }
+
+    public void SetByItemIds(List<string> ids)
+    {
+        inventoryItems.Clear();
+        if (ids == null) return;
+        foreach (var id in ids)
+        {
+            var item = ItemDatabase.Instance.GetItemById(id); // 见下
+            if (item != null) inventoryItems.Add(item);
+        }
+    }
+
 
 }

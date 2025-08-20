@@ -4,33 +4,50 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-     public float moveSpeed = 5f;
+    [SerializeField] float moveSpeed = 5f;
+    [SerializeField] KeyCode runKey = KeyCode.LeftShift;
+    [SerializeField] float runMultiplier = 1.6f;
 
-    private Rigidbody2D rb;
-    private SpriteRenderer spriteRenderer;
-    private float moveInput;
+    // Optional: if you later put visuals under a child (e.g., VisualPivot)
+    [Header("Optional")]
+    [SerializeField] Transform visualPivot;   // leave null if you want to use SpriteRenderer.flipX
+    [SerializeField] Animator animator;       // idle/walk blend by speed (optional)
+
+    Rigidbody2D rb;
+    SpriteRenderer spriteRenderer;
+    float moveInput;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        // Physics tip: freeze Z rotation in Rigidbody2D to avoid tipping over.
+        rb.freezeRotation = true;
     }
 
     void Update()
     {
-        // 获取水平输入（A/D 或 左右方向键）
         moveInput = Input.GetAxisRaw("Horizontal");
 
-        // 翻转角色朝向
-        if (moveInput > 0)
-            spriteRenderer.flipX = false;
-        else if (moveInput < 0)
-            spriteRenderer.flipX = true;
+        // Flip facing
+        if (visualPivot) {
+            if (Mathf.Abs(moveInput) > 0.01f) {
+                var s = visualPivot.localScale;
+                s.x = Mathf.Sign(moveInput) >= 0 ? Mathf.Abs(s.x) : -Mathf.Abs(s.x);
+                visualPivot.localScale = s;
+            }
+        } else {
+            if (moveInput > 0) spriteRenderer.flipX = false;
+            else if (moveInput < 0) spriteRenderer.flipX = true;
+        }
+
+        // Drive optional animator by horizontal speed
+        if (animator) animator.SetFloat("Speed", Mathf.Abs(rb.velocity.x));
     }
 
     void FixedUpdate()
     {
-        // 应用移动
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        float speed = Input.GetKey(runKey) ? moveSpeed * runMultiplier : moveSpeed;
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
     }
 }

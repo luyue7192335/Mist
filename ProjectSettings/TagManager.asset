@@ -41,3 +41,27 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Far
+    uniqueID: 507849533
+    locked: 0
+  - name: BG
+    uniqueID: 3662419507
+    locked: 0
+  - name: BGDecor
+    uniqueID: 3288087169
+    locked: 0
+  - name: BGProps
+    uniqueID: 3212462391
+    locked: 0
+  - name: Characters
+    uniqueID: 1004855805
+    locked: 0
+  - name: FGProps
+    uniqueID: 1942069297
+    locked: 0
+  - name: Overlays
+    uniqueID: 1952349115
+    locked: 0
+  - name: UI-World
+    uniqueID: 4289406591
+    locked: 0

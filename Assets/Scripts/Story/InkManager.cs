@@ -12,7 +12,7 @@ public class InkManager : MonoBehaviour
     public Button choiceButtonPrefab; // 选项按钮预制体
     public Transform choicePanel; // 选项容器
 
-    private Story story; // Ink 剧情数据
+    public Story story; // Ink 剧情数据
 
     [SerializeField] private string nextSceneName = "Scene2"; // 通过Inspector配置目标场景
     private bool isDialogueEnded = false;

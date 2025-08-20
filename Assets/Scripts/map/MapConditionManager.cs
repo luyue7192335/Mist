@@ -5,13 +5,10 @@ using UnityEngine;
 public class MapConditionManager : MonoBehaviour
 {
     public static MapConditionManager Instance;
+    private HashSet<int> unlockedMaps = new();
+    public List<int> GetUnlockedList() => new List<int>(unlockedMaps);
 
-    private HashSet<int> unlockedMaps = new HashSet<int>();
-
-    void Awake()
-    {
-        Instance = this;
-    }
+    void Awake(){ Instance = this; }
 
     public void MarkExplorationDone(int mapIndex)
     {
@@ -21,6 +18,16 @@ public class MapConditionManager : MonoBehaviour
 
     public bool CanEnter(int mapIndex)
     {
-        return unlockedMaps.Contains(mapIndex - 1); // 要完成前一张地图才能进
+        return unlockedMaps.Contains(mapIndex - 1);
     }
+
+    // ★ 导出为列表
+   
+    // ★ 读档恢复
+    public void RestoreUnlocked(List<int> list)
+    {
+        unlockedMaps = new HashSet<int>(list ?? new List<int>());
+    }
+
+
 }

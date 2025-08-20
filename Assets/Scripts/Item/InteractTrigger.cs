@@ -13,6 +13,13 @@ public class InteractTrigger : MonoBehaviour
     public string requiredItemId;              // 若需交付物品，写其ID
     public bool consumeRequiredItem = true;    // 是否交付后删除物品
 
+    [Header("交互后给予物品")]
+    public bool giveItemAfterInteraction = false;
+    public ItemData itemToGive;
+
+    [Header("交互后是否销毁物体")]
+    public bool destroyAfterInteraction = false;
+
     [Header("地图探索推进")]
     public bool triggersMapProgress = false;
     public int mapIndex = 0;
@@ -47,11 +54,20 @@ public class InteractTrigger : MonoBehaviour
             {
                 Debug.Log("缺少所需物品，播放备用剧情");
                 PlayStory(fallbackDialogueFile);
+                return; // 失败就别给物品
             }
+
+            if (destroyAfterInteraction)
+                Destroy(gameObject);
         }
         else
         {
             PlayStory(dialogueFile);
+        }
+
+        if (giveItemAfterInteraction && itemToGive != null)
+        {
+            InventoryManager.Instance.AddItem(itemToGive);
         }
 
         if (hintImage != null)

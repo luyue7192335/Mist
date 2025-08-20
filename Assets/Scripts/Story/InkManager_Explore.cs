@@ -14,10 +14,10 @@ public class InkManager_Explore : MonoBehaviour
     public Transform choicePanel; // 选项容器
     public GameObject dialogueUI; 
 
-    private Story story; // Ink 剧情数据
-    private PlayerController playerController; // 玩家移动脚本
+    public Story story; // Ink 剧情数据
+    public PlayerController playerController; // 玩家移动脚本
 
-    private bool isStoryActive = false; // 判断是否正在进行剧情
+    public bool isStoryActive = false; // 判断是否正在进行剧情
 
     void Awake()
     {
