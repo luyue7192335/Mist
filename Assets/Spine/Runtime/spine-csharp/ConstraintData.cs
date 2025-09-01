@@ -1,8 +1,8 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated April 5, 2025. Replaces all prior versions.
+ * Last updated January 1, 2020. Replaces all prior versions.
  *
- * Copyright (c) 2013-2025, Esoteric Software LLC
+ * Copyright (c) 2013-2020, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
@@ -30,7 +30,8 @@
 using System;
 using System.Collections.Generic;
 
-namespace Spine {
+namespace Spine
+{
 	/// <summary>The base class for all constraint datas.</summary>
 	public abstract class ConstraintData {
 		internal readonly string name;
@@ -45,13 +46,13 @@ namespace Spine {
 		/// <summary> The constraint's name, which is unique across all constraints in the skeleton of the same type.</summary>
 		public string Name { get { return name; } }
 
-		/// <summary>The ordinal of this constraint for the order a skeleton's constraints will be applied by
-		/// <see cref="Skeleton.UpdateWorldTransform(Skeleton.Physics)"/>.</summary>
+		///<summary>The ordinal of this constraint for the order a skeleton's constraints will be applied by
+		/// <see cref="Skeleton.UpdateWorldTransform()"/>.</summary>
 		public int Order { get { return order; } set { order = value; } }
 
-		/// <summary>When true, <see cref="Skeleton.UpdateWorldTransform(Skeleton.Physics)"/> only updates this constraint if the <see cref="Skeleton.Skin"/>
-		/// contains this constraint.</summary>
-		/// <seealso cref="Skin.Constraints"/>
+		///<summary>When true, <see cref="Skeleton.UpdateWorldTransform()"/> only updates this constraint if the <see cref="Skeleton.Skin"/> contains
+		/// this constraint.</summary>
+		///<seealso cref="Skin.Constraints"/>
 		public bool SkinRequired { get { return skinRequired; } set { skinRequired = value; } }
 
 		override public string ToString () {

@@ -1,8 +1,8 @@
 /******************************************************************************
  * Spine Runtimes License Agreement
- * Last updated April 5, 2025. Replaces all prior versions.
+ * Last updated January 1, 2020. Replaces all prior versions.
  *
- * Copyright (c) 2013-2025, Esoteric Software LLC
+ * Copyright (c) 2013-2020, Esoteric Software LLC
  *
  * Integration of the Spine Runtimes into software or otherwise creating
  * derivative works of the Spine Runtimes is permitted under the terms and
@@ -28,20 +28,15 @@
  *****************************************************************************/
 
 namespace Spine {
-	using Physics = Skeleton.Physics;
 
-	/// <summary>The interface for items updated by <see cref="Skeleton.UpdateWorldTransform(Physics)"/>.</summary>
+	///<summary>The interface for items updated by <see cref="Skeleton.UpdateWorldTransform()"/>.</summary>
 	public interface IUpdatable {
-		/// <param name="physics">Determines how physics and other non-deterministic updates are applied.</param>
-		void Update (Physics physics);
+		void Update ();
 
-		/// <summary>Returns false when this item won't be updated by
-		/// <see cref="Skeleton.UpdateWorldTransform(Skeleton.Physics)"/> because a skin is required and the
-		/// <see cref="Skeleton.Skin">active skin</see> does not contain this item.</summary>
+		///<summary>Returns false when this item has not been updated because a skin is required and the <see cref="Skeleton.Skin">active
+		/// skin</see> does not contain this item.</summary>
 		/// <seealso cref="Skin.Bones"/>
 		/// <seealso cref="Skin.Constraints"/>
-		/// <seealso cref="BoneData.SkinRequired"/>
-		/// <seealso cref="ConstraintData.SkinRequired"/>
 		bool Active { get; }
 	}
 }

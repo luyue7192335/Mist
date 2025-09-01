@@ -1,0 +1,209 @@
+
+cai dan.png
+size: 1748,435
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1
+  rotate: false
+  xy: 1365, 118
+  size: 9, 10
+  orig: 12, 12
+  offset: 2, 1
+  index: -1
+10
+  rotate: true
+  xy: 1361, 52
+  size: 13, 12
+  orig: 15, 14
+  offset: 1, 1
+  index: -1
+11
+  rotate: false
+  xy: 1368, 131
+  size: 6, 6
+  orig: 9, 8
+  offset: 1, 1
+  index: -1
+12
+  rotate: false
+  xy: 1376, 128
+  size: 4, 4
+  orig: 6, 6
+  offset: 1, 1
+  index: -1
+13
+  rotate: false
+  xy: 1334, 35
+  size: 25, 30
+  orig: 29, 33
+  offset: 2, 1
+  index: -1
+14
+  rotate: false
+  xy: 1365, 107
+  size: 9, 9
+  orig: 12, 12
+  offset: 2, 1
+  index: -1
+15
+  rotate: false
+  xy: 1368, 147
+  size: 6, 7
+  orig: 9, 9
+  offset: 1, 1
+  index: -1
+16
+  rotate: false
+  xy: 1376, 148
+  size: 6, 6
+  orig: 8, 8
+  offset: 1, 1
+  index: -1
+17
+  rotate: false
+  xy: 1334, 67
+  size: 27, 29
+  orig: 32, 33
+  offset: 3, 3
+  index: -1
+18
+  rotate: false
+  xy: 1365, 98
+  size: 7, 7
+  orig: 10, 10
+  offset: 2, 2
+  index: -1
+19
+  rotate: true
+  xy: 1334, 98
+  size: 30, 29
+  orig: 36, 35
+  offset: 3, 3
+  index: -1
+2
+  rotate: true
+  xy: 1376, 134
+  size: 5, 4
+  orig: 7, 7
+  offset: 1, 1
+  index: -1
+20
+  rotate: true
+  xy: 1363, 84
+  size: 12, 11
+  orig: 14, 14
+  offset: 1, 1
+  index: -1
+3
+  rotate: false
+  xy: 1374, 99
+  size: 7, 6
+  orig: 9, 9
+  offset: 1, 2
+  index: -1
+4
+  rotate: false
+  xy: 1334, 130
+  size: 32, 34
+  orig: 36, 38
+  offset: 3, 3
+  index: -1
+5
+  rotate: true
+  xy: 1378, 159
+  size: 5, 7
+  orig: 10, 10
+  offset: 2, 2
+  index: -1
+6
+  rotate: false
+  xy: 1368, 156
+  size: 8, 8
+  orig: 11, 10
+  offset: 1, 1
+  index: -1
+7
+  rotate: true
+  xy: 1363, 72
+  size: 10, 11
+  orig: 13, 14
+  offset: 1, 1
+  index: -1
+8
+  rotate: false
+  xy: 1376, 141
+  size: 5, 5
+  orig: 7, 7
+  offset: 1, 1
+  index: -1
+9
+  rotate: false
+  xy: 1368, 139
+  size: 6, 6
+  orig: 8, 9
+  offset: 1, 2
+  index: -1
+bei bao
+  rotate: false
+  xy: 995, 53
+  size: 111, 111
+  orig: 114, 113
+  offset: 1, 1
+  index: -1
+guang
+  rotate: true
+  xy: 1392, 5
+  size: 428, 262
+  orig: 430, 304
+  offset: 1, 1
+  index: -1
+kuang jia
+  rotate: true
+  xy: 2, 2
+  size: 431, 530
+  orig: 501, 549
+  offset: 35, 13
+  index: -1
+min zuo
+  rotate: true
+  xy: 534, 34
+  size: 399, 459
+  orig: 401, 461
+  offset: 1, 1
+  index: -1
+ren wwu
+  rotate: false
+  xy: 1108, 53
+  size: 111, 111
+  orig: 114, 113
+  offset: 1, 1
+  index: -1
+she zhi
+  rotate: false
+  xy: 1221, 53
+  size: 111, 111
+  orig: 114, 113
+  offset: 1, 1
+  index: -1
+xin bian kuang
+  rotate: true
+  xy: 1656, 316
+  size: 117, 90
+  orig: 119, 92
+  offset: 1, 1
+  index: -1
+xin man
+  rotate: true
+  xy: 1656, 197
+  size: 117, 90
+  orig: 119, 92
+  offset: 1, 1
+  index: -1
+zhi zhen
+  rotate: true
+  xy: 995, 166
+  size: 267, 395
+  orig: 379, 422
+  offset: 110, 23
+  index: -1

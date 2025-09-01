@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class InteractTrigger : MonoBehaviour
 {
+[Header("高亮（可选）")]
+    public GameObject highlightVisual;
+
     [Header("剧情绑定")]
     public TextAsset dialogueFile;             // 正常剧情
     public TextAsset fallbackDialogueFile;     // 缺少物品时的替代剧情
@@ -22,25 +25,30 @@ public class InteractTrigger : MonoBehaviour
 
     [Header("地图探索推进")]
     public bool triggersMapProgress = false;
-    public int mapIndex = 0;
+    public int mapIndex = 0; // 若以后改成场景key，可改成string
 
-    [Header("UI 提示")]
-    public GameObject hintImage;
+    [Header("点击距离限制")]
+    public Transform interactionCenter;   // 若空则用 transform
+    public float maxClickDistance = 1.6f;
 
-    private bool isPlayerInRange = false;
-
-    void Update()
+    public void SetHighlighted(bool on)
     {
-        if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
-        {
-            TryInteract();
-        }
+        if (highlightVisual) highlightVisual.SetActive(on);
     }
 
-    private void TryInteract()
+    public bool CanInteract(GameObject player)
     {
-        Debug.Log("按下F，尝试互动");
+        if (!string.IsNullOrEmpty(requiredItemId))
+        {
+            if (InventoryManager.Instance == null || !InventoryManager.Instance.HasItem(requiredItemId))
+                return false;
+        }
+        return true;
+    }
 
+    public void Interact(GameObject player)
+    {
+        // 物品条件
         if (!string.IsNullOrEmpty(requiredItemId))
         {
             if (InventoryManager.Instance.HasItem(requiredItemId))
@@ -52,60 +60,42 @@ public class InteractTrigger : MonoBehaviour
             }
             else
             {
-                Debug.Log("缺少所需物品，播放备用剧情");
                 PlayStory(fallbackDialogueFile);
-                return; // 失败就别给物品
+                return; // 缺物品则结束，不发奖励
             }
-
-            if (destroyAfterInteraction)
-                Destroy(gameObject);
         }
         else
         {
             PlayStory(dialogueFile);
         }
 
+        // 发奖励物品
         if (giveItemAfterInteraction && itemToGive != null)
-        {
             InventoryManager.Instance.AddItem(itemToGive);
-        }
 
-        if (hintImage != null)
-            hintImage.SetActive(false);
-
-        if (triggersMapProgress)
+        // 地图推进
+        if (triggersMapProgress && MapConditionManager.Instance != null)
             MapConditionManager.Instance.MarkExplorationDone(mapIndex);
+
+        // 自毁
+        if (destroyAfterInteraction)
+            Destroy(gameObject);
     }
 
-    private void PlayStory(TextAsset inkJson)
+    void PlayStory(TextAsset inkJson)
     {
-        if (inkJson != null)
-        {
-            InkManager_Explore.Instance.StartStory(inkJson);
-        }
-        else
-        {
-            Debug.LogWarning("未绑定Ink JSON文件！");
-        }
+        if (inkJson != null) InkManager_Explore.Instance.StartStory(inkJson);
+        else Debug.LogWarning("未绑定Ink JSON文件！");
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    // — 鼠标点击（距离限制）—
+    void OnMouseDown()
     {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInRange = true;
-            if (hintImage != null)
-                hintImage.SetActive(true);
-        }
-    }
+        var player = GameObject.FindGameObjectWithTag("Player");
+        if (!player) return;
+        Vector3 c = interactionCenter ? interactionCenter.position : transform.position;
+        if (Vector2.Distance(player.transform.position, c) > maxClickDistance) return;
 
-    void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isPlayerInRange = false;
-            if (hintImage != null)
-                hintImage.SetActive(false);
-        }
+        if (CanInteract(player)) Interact(player);
     }
 }
