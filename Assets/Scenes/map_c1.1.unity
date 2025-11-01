@@ -122,6 +122,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87912771
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87912773}
+  - component: {fileID: 87912772}
+  m_Layer: 0
+  m_Name: startStory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &87912772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87912771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25e7e3953038175488193a5b6a87500a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inkJSON: {fileID: 4900000, guid: ee6b6bbc54663384eb4dd902bae4f5a5, type: 3}
+--- !u!4 &87912773
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87912771}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.3497956, y: 18.166088, z: 90}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1853823535}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &189367896
 GameObject:
   m_ObjectHideFlags: 0
@@ -1350,7 +1395,7 @@ SpriteRenderer:
   m_SortingLayerID: -632547789
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ee0f6d6b780adc64880ec27123fdf12d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4ef85c73c8cda05449faa47889b8b2cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2774,8 +2819,6 @@ MonoBehaviour:
   consumeItem: 0
   requireFlagKey: 
   highlightVisual: {fileID: 1818471405}
-  interactionCenter: {fileID: 0}
-  maxClickDistance: 1.6
 --- !u!61 &1770606648
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2972,6 +3015,7 @@ Transform:
   - {fileID: 980322768}
   - {fileID: 872033711}
   - {fileID: 1224226057}
+  - {fileID: 87912773}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859862383

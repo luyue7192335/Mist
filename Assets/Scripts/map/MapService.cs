@@ -104,4 +104,11 @@ public static MapService Instance { get; private set; }
         if (spawn) player.transform.position = spawn.position;
         else Debug.LogWarning($"[MapService] 没找到出生点：{spawnName}");
     }
+
+    public void TransitionTo(string sceneId, string spawnPointId)
+{
+    // 统一入口：InkTagRouter 会调它
+    // 如果你已有协程加载方法，就在这里调用它
+    StartCoroutine(LoadMapAdditive(sceneId, spawnPointId));
+}
 }
