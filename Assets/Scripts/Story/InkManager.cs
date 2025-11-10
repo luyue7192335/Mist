@@ -19,7 +19,7 @@ public class InkManager : MonoBehaviour
 
     void Start()
     {
-        
+        Time.timeScale = 1f;
 
         TextAsset inkJson = Resources.Load<TextAsset>("test"); // 不带 .json
         story = new Story(inkJson.text);

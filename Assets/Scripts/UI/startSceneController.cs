@@ -2,43 +2,55 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 public class startSceneController : MonoBehaviour
 {
-    public GameObject startPanel;   // 开始界面
-    public GameObject chapterPanel; // 章节选择界面
-    public string chapter1SceneName = "StoryText"; // 章节1的场景名称
+[Header("点击开始后要加载的场景名")]
+    // 建议默认是 "Persistent"；如果你想先进序章文本，就改成 "StoryText"
+    public string firstSceneName = "Persistent";
 
-    void Start()
+    [Header("（可选）把按钮直接拖到这里自动绑定")]
+    public Button startButton;
+    public Button quitButton;
+
+    void Awake()
     {
-       
+        // 确保回到正常时间流
+        Time.timeScale = 1f;
+        // 主菜单通常显示鼠标
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
 
-        // 确保游戏启动时只显示 startPanel
-        startPanel.SetActive(true);
-        chapterPanel.SetActive(false);
+        // 自动绑定按钮
+        if (startButton) startButton.onClick.AddListener(StartGame);
+        if (quitButton)  quitButton .onClick.AddListener(QuitGame);
     }
 
-    // 开始游戏（显示章节界面）
-    public void OnStartButtonClicked()
+    public void StartGame()
     {
-        startPanel.SetActive(false);
-        chapterPanel.SetActive(true);
+        if (string.IsNullOrEmpty(firstSceneName))
+        {
+            Debug.LogError("[StartMenu] firstSceneName 为空！");
+            return;
+        }
+        SceneManager.LoadScene(firstSceneName, LoadSceneMode.Single);
     }
 
-    // 选择章节1并加载对应场景
-    public void OnChapter1ButtonClicked()
+    public void QuitGame()
     {
-        SceneManager.LoadScene(chapter1SceneName);
+    #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+    #else
+        Application.Quit();
+    #endif
     }
 
     void Update()
     {
+        // 回车/空格 = 开始；ESC = 退出
+        if (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.Space))
+            StartGame();
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
-           #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-        }
+            QuitGame();
     }
 }

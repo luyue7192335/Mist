@@ -21,6 +21,8 @@ public class MainMenuController : MonoBehaviour
     public GameObject settingsPanel;
     public Button    settingsBack;
 
+    public CanvasGroup dialogueGroup;
+
     [Header("面板打开时需禁用的脚本(可选)")]
     public MonoBehaviour[] playerInputToDisable; // 拖 PlayerController、InteractionController 等
 
@@ -51,23 +53,27 @@ public class MainMenuController : MonoBehaviour
     void OpenExclusive(GameObject panel)
     {
         if (!panel) return;
-
-        // 已经是这个面板 → 视为返回
         if (_openPanel == panel) { CloseAll(); return; }
 
-        // 先关掉其它
         SetPanel(inventoryPanel, false);
         SetPanel(characterPanel, false);
         SetPanel(settingsPanel,  false);
 
-        // 打开目标
         SetPanel(panel, true);
         _openPanel = panel;
 
-        // 面板打开时：暂停 + 禁用玩家输入 + 隐藏 HUD（按需）
         Time.timeScale = 0f;
         SetPlayerInputs(false);
         if (hudBar) hudBar.SetActive(false);
+
+        // ★ 关键：对话继续显示，但不拦鼠标/键盘射线
+        if (dialogueGroup)
+        {
+            dialogueGroup.interactable   = false;
+            dialogueGroup.blocksRaycasts = false;
+            // 可选：半透明
+            // dialogueGroup.alpha = 0.9f;
+        }
     }
 
     public void CloseAll()
@@ -77,10 +83,17 @@ public class MainMenuController : MonoBehaviour
         SetPanel(settingsPanel,  false);
         _openPanel = null;
 
-        // 恢复
         Time.timeScale = 1f;
         SetPlayerInputs(true);
         if (hudBar) hudBar.SetActive(true);
+
+        // 恢复对话面板可交互
+        if (dialogueGroup)
+        {
+            dialogueGroup.interactable   = true;
+            dialogueGroup.blocksRaycasts = true;
+            // dialogueGroup.alpha = 1f;
+        }
     }
 
     void SetPanel(GameObject p, bool on)

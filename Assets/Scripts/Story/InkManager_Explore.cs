@@ -5,6 +5,7 @@ using Ink.Runtime;
 using UnityEngine.UI;
 using TMPro;
 using System.Text.RegularExpressions;
+using UnityEngine.EventSystems; 
 
 public class InkManager_Explore : MonoBehaviour
 {
@@ -29,102 +30,213 @@ public class InkManager_Explore : MonoBehaviour
 
     public bool isStoryActive = false; // 判断是否正在进行剧情
 
-    [Header("Auto / Skip")]
-    public bool autoMode = false;
+    [SerializeField] UnityEngine.UI.Button clickButton;
+
+    [Header("Dialogue Buttons")]
+    [SerializeField] UnityEngine.UI.Button btnAuto;
+    [SerializeField] UnityEngine.UI.Button btnSkip;
+    [SerializeField] UnityEngine.UI.Image  imgAuto;
+    [SerializeField] UnityEngine.UI.Image  imgSkip;
+
+    [Header("Button Sprites")]
+    [SerializeField] Sprite autoPlaySprite;   // 未播放：显示播放
+    [SerializeField] Sprite autoPauseSprite;  // 播放中：显示暂停
+    [SerializeField] Sprite skipIdleSprite;   // 跳过关闭
+
+    [Header("Auto / Skip Params")]
+    public bool  autoMode = false;
     public float autoDelay = 1.6f;
 
-    public bool skipMode = false;
-    public float skipInterval = 0.02f;   // 快进间隔（尽量短）
+    public bool  skipMode = false;
+    public float skipInterval = 0.02f;
+
     Coroutine _autoCo, _skipCo;
 
-    // === 跑剧情时调用它来刷新按钮状态（可选）===
-    public System.Action<bool,bool> OnAutoSkipChanged;
+    // === 提供给按钮的回调 ===
+    public void UI_OnClickAuto()
+    {
+        if (!isStoryActive) return;
 
-    // === 绑定 UI 按钮 ===
-    public void ToggleAuto()
-    {
-        autoMode = !autoMode;
-        if (autoMode) { skipMode = false; StopSkip(); _autoCo = StartCoroutine(AutoLoop()); }
-        else          { StopAuto(); }
-        OnAutoSkipChanged?.Invoke(autoMode, skipMode);
+        if (autoMode == true)
+        {
+            // 如果正在播放，点一下就明确停止
+            StopAuto();
+            RefreshButtonsVisual();
+            Debug.Log("停止自动播放");
+            return;
+        }
+
+        // 如果没在播放，先保证跳过已关，再开启自动
+        StopSkip();
+        autoMode = true;
+        if (_autoCo != null) StopCoroutine(_autoCo);
+        _autoCo = StartCoroutine(AutoLoop());
+        Debug.Log("自动播放");
+        RefreshButtonsVisual();
     }
-    public void ToggleSkip()
+
+    public void UI_OnClickSkip()
     {
+        // 切换跳过；若正在自动播放，则先停自动
+        if (!isStoryActive) return;
         skipMode = !skipMode;
-        if (skipMode) { autoMode = false; StopAuto(); _skipCo = StartCoroutine(SkipLoop()); }
-        else          { StopSkip(); }
-        OnAutoSkipChanged?.Invoke(autoMode, skipMode);
+        if (skipMode)
+        {
+            StopAuto();
+            _skipCo = StartCoroutine(SkipLoop());
+        }
+        else
+        {
+            StopSkip();
+        }
+        RefreshButtonsVisual();
     }
-    public void StopAuto() { if (_autoCo!=null) StopCoroutine(_autoCo); _autoCo=null; autoMode=false; }
-    public void StopSkip() { if (_skipCo!=null) StopCoroutine(_skipCo); _skipCo=null; skipMode=false; }
 
+    // === 协程：自动/跳过 ===
     IEnumerator AutoLoop()
     {
         while (isStoryActive && autoMode && story != null)
         {
-            // 若有选项就停
-            if (story.currentChoices.Count > 0) { StopAuto(); OnAutoSkipChanged?.Invoke(autoMode, skipMode); yield break; }
+            // 有选项就停（尊重玩家选择）
+            if (story.currentChoices.Count > 0) { StopAuto(); break; }
 
             yield return new WaitForSeconds(autoDelay);
 
-            // 再判断一次，避免等待期间出现选项
-            if (!autoMode) yield break;
-            if (story != null && story.currentChoices.Count == 0) DisplayNextLine();
-            else { StopAuto(); OnAutoSkipChanged?.Invoke(autoMode, skipMode); yield break; }
+            if (!autoMode || story == null) break;
+            if (story.currentChoices.Count == 0) DisplayNextLine();
+            else { StopAuto(); break; }
         }
-        StopAuto(); OnAutoSkipChanged?.Invoke(autoMode, skipMode);
+        RefreshButtonsVisual();
     }
 
     IEnumerator SkipLoop()
     {
         while (isStoryActive && skipMode && story != null)
         {
-            if (story.currentChoices.Count > 0) { StopSkip(); OnAutoSkipChanged?.Invoke(autoMode, skipMode); yield break; }
+            // 有选项就停
+            if (story.currentChoices.Count > 0) { StopSkip(); break; }
 
             DisplayNextLine();
             yield return new WaitForSeconds(skipInterval);
         }
-        StopSkip(); OnAutoSkipChanged?.Invoke(autoMode, skipMode);
+        RefreshButtonsVisual();
     }
 
+    void StopAuto()
+    {
+        if (_autoCo != null) StopCoroutine(_autoCo);
+        _autoCo = null;
+        autoMode = false;
+    }
+
+    void StopSkip()
+    {
+        if (_skipCo != null) StopCoroutine(_skipCo);
+        _skipCo = null;
+        skipMode = false;
+    }
+
+    // === 点击屏幕推进时，打断 Auto/Skip（玩家优先）===
+ 
+  
+
+    // === 你在 DisplayNextLine() 的最后，或 ShowChoices() 后面调用它 ===
+    void RefreshButtonsVisual()
+    {
+        // 图标切换
+        if (imgAuto)
+            imgAuto.sprite = autoMode ? autoPauseSprite : autoPlaySprite;
+
+        // if (imgSkip)
+        //     imgSkip.sprite = (skipMode && skipActiveSprite) ? skipActiveSprite : skipIdleSprite;
+
+        // 可点性：有选项时禁止自动/跳过按钮（也可选择只禁用跳过）
+        bool hasChoices = (story != null && story.currentChoices.Count > 0);
+        if (btnAuto) btnAuto.interactable = !hasChoices; // 自动播放遇到选项会停，这里也禁掉
+        if (btnSkip) btnSkip.interactable = !hasChoices; // 跳过也应禁掉
+    }
 
     void Awake()
     {
         Instance = this;
+        if (clickButton == null)
+        clickButton = transform.Find("window/clickButton")?.GetComponent<UnityEngine.UI.Button>();
+
     }
+
+    void OnEnable()
+{
+    if (clickButton != null)
+    {
+        clickButton.onClick.RemoveListener(UI_OnClickNext); // 防重复
+        clickButton.onClick.AddListener(UI_OnClickNext);
+    }
+}
+
+void OnDisable()
+{
+    if (clickButton != null)
+        clickButton.onClick.RemoveListener(UI_OnClickNext);
+}
 
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
+        Time.timeScale = 1f;
+
+        
     }
 
     void Update()
     {
-        // if (!isStoryActive) return;
-
-        // // 鼠标点击推进对话（只有没有选项时才生效）
-        // if (Input.GetMouseButtonDown(0) && story != null && story.currentChoices.Count == 0)
-        // {
-        //     DisplayNextLine();
-        // }
+        
 
         if (!isStoryActive) return;
 
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (story != null && story.currentChoices.Count == 0)
-            {
-                StopAuto(); StopSkip();
-                OnAutoSkipChanged?.Invoke(autoMode, skipMode);
-                DisplayNextLine();
-            }
-        }
+        
+
+        // if (Input.GetMouseButtonDown(0))
+        // {
+        //     if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+        //     return;
+
+        //     // 只有在“没有选项”时，左键推进一行；同时停止自动/跳过
+        //     if (story != null && story.currentChoices.Count == 0)
+        //     {
+        //         StopAuto();
+        //         StopSkip();
+        //         RefreshButtonsVisual();
+        //         DisplayNextLine();
+        //     }
+        // }
     }
+
+    public void UI_OnClickNext()
+{
+    if (!isStoryActive || story == null) return;
+
+    // 有选项时不推进（避免误触）
+    if (story.currentChoices != null && story.currentChoices.Count > 0) return;
+
+    // 强制推进或结束
+    if (story.canContinue) DisplayNextLine();
+    else EndStory();
+
+    Debug.Log("Click next");
+
+    //（可选）任何手动点击都停止自动/跳过
+    StopAuto();
+    StopSkip();
+    RefreshButtonsVisual();
+}
+
 
     // 供 InteractTrigger 调用，开始播放剧情
     public void StartStory(TextAsset inkJSON)
     {
         Debug.Log("InkManager_Explore开始播放剧情");
+
+        Time.timeScale = 1f;
 
         story = new Story(inkJSON.text);
         isStoryActive = true;
@@ -132,6 +244,8 @@ public class InkManager_Explore : MonoBehaviour
         // 禁止玩家移动
         playerController.enabled = false;
         dialogueUI.SetActive(true);
+
+        RefreshButtonsVisual();
 
         DisplayNextLine();
     }
@@ -212,6 +326,8 @@ void ShowChoices()
 
             DisplayNextLine();
         });
+
+        RefreshButtonsVisual();
     }
 }
 
@@ -237,6 +353,8 @@ void ShowChoices()
 
         dialogueText.text = "";
 
+        RefreshButtonsVisual();
+
         // 清除选项
         foreach (Transform child in choicePanel) Destroy(child.gameObject);
 
@@ -246,6 +364,6 @@ void ShowChoices()
 
          StopAuto();
         StopSkip();
-        OnAutoSkipChanged?.Invoke(autoMode, skipMode);
+        //OnAutoSkipChanged?.Invoke(autoMode, skipMode);
     }
 }

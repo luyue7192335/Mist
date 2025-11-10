@@ -6,48 +6,129 @@ using System.Linq;
 using TMPro;
 
 
-
 public class InventorySlotUI : MonoBehaviour
 {
-      public Image icon;
-    public TextMeshProUGUI nameText;
-    public TextMeshProUGUI countText;    // 新增：右下角显示数量或 N/阈值
+    [Header("Slot visuals")]
+    [SerializeField] Image icon;
+    [SerializeField] TMP_Text nameText;     // 不要可以留空
+    [SerializeField] TMP_Text countText;    // 不要可以留空
 
-    private InventorySlot slot;          // 保存引用，点击时用
-    public void Setup(InventorySlot s)
+    [Header("Inline action panel (child of slot)")]
+    [SerializeField] RectTransform actionPanel; // 拖到 ActionPanel
+    [SerializeField] Button btnUse;
+    [SerializeField] Button btnCombine;
+    [SerializeField] Button btnInspect;
+
+    InventorySlot slot;
+    RectTransform self;
+
+    // 供 InventoryUI 传入的“选中回调”
+    System.Action<InventorySlot> onSelected;
+
+    // 记录当前展开的那个格子，保证同一时间只展开一个
+    static InventorySlotUI s_open;
+
+    void Awake()
     {
-        slot = s;
-        if (icon) { icon.enabled = true; icon.sprite = s.item.icon; }
-        if (nameText) nameText.text = s.item.itemName;
-
-        if (countText)
-        {
-            if (s.item.combineThreshold > 0)
-                countText.text = $"{Mathf.Min(s.count, s.item.combineThreshold)}/{s.item.combineThreshold}";
-            else
-                countText.text = s.count > 1 ? s.count.ToString() : "";
-        }
+        self = (RectTransform)transform;
+        HidePanel();
     }
 
-    public void OnClickUse()
+    public void Setup(InventorySlot s, System.Action<InventorySlot> onSelected)  
+    {
+        slot = s;
+        this.onSelected = onSelected;
+
+        if (s == null || s.item == null)
+        {
+            Clear();
+            return;
+        }
+
+        if (icon) { icon.enabled = true; icon.sprite = s.item.icon; }
+        if (nameText)  nameText.text  = ""; // 你说现在不显示
+        if (countText) countText.text = "";
+
+        // 面板按钮只做占位
+        if (btnUse)
+        {
+            btnUse.onClick.RemoveAllListeners();
+            btnUse.onClick.AddListener(() => {
+                Debug.Log($"[Bag] 使用：{slot.item.itemName}");
+                HidePanel();
+            });
+        }
+        if (btnCombine)
+        {
+            btnCombine.onClick.RemoveAllListeners();
+            bool show = slot.item.combineThreshold > 0;
+            btnCombine.gameObject.SetActive(show);
+            btnCombine.onClick.AddListener(() => {
+                Debug.Log($"[Bag] 合成：{slot.item.itemName}");
+                HidePanel();
+            });
+        }
+        if (btnInspect)
+        {
+            btnInspect.onClick.RemoveAllListeners();
+            btnInspect.onClick.AddListener(() => {
+                Debug.Log($"[Bag] 询问：{slot.item.itemName}");
+                HidePanel();
+            });
+        }
+
+        HidePanel(); // 刷新时先收起
+    }
+
+    public void OnClick()  // 把 Slot 的 Button.onClick 绑到它
     {
         if (slot == null || slot.item == null) return;
-        if (slot.item.usableInBag)
+
+        onSelected?.Invoke(slot);
+
+        // 已有别的格子展开，则先收起
+        if (s_open && s_open != this) s_open.HidePanel();
+
+        // 自己切换显示
+        if (actionPanel && !actionPanel.gameObject.activeSelf)
         {
-            InventoryManager.Instance.UseItem(slot.item);
-            Debug.Log("点击使用了物品：" + slot.item.itemName);
+            ShowPanel();
+            s_open = this;
         }
         else
         {
-            Debug.Log("该物品不能在背包中使用：" + slot.item.itemName);
+            HidePanel();
+            if (s_open == this) s_open = null;
         }
+    }
+
+    void ShowPanel()
+    {
+        if (!actionPanel) return;
+
+        // 作为自己的子物体，并贴在右侧
+        // actionPanel.SetParent(self, false);
+        // actionPanel.pivot = new Vector2(0f, 0.5f);
+        // actionPanel.anchorMin = new Vector2(0f, 0.5f);
+        // actionPanel.anchorMax = new Vector2(0f, 0.5f);
+        // actionPanel.anchoredPosition = new Vector2(self.rect.width + 8f, 0f); // 右侧 8px
+
+        actionPanel.gameObject.SetActive(true);
+        actionPanel.SetAsLastSibling(); // 不被 Icon 遮
+    }
+
+    void HidePanel()
+    {
+        if (actionPanel) actionPanel.gameObject.SetActive(false);
     }
 
     public void Clear()
     {
-        if (nameText) nameText.text = "";
+        if (nameText)  nameText.text  = "";
         if (countText) countText.text = "";
         if (icon) { icon.sprite = null; icon.enabled = false; }
+        HidePanel();
+        if (s_open == this) s_open = null;
         slot = null;
     }
 }
