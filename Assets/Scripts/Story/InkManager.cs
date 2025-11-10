@@ -12,14 +12,14 @@ public class InkManager : MonoBehaviour
     public Button choiceButtonPrefab; // 选项按钮预制体
     public Transform choicePanel; // 选项容器
 
-    private Story story; // Ink 剧情数据
+    public Story story; // Ink 剧情数据
 
     [SerializeField] private string nextSceneName = "Scene2"; // 通过Inspector配置目标场景
     private bool isDialogueEnded = false;
 
     void Start()
     {
-        
+        Time.timeScale = 1f;
 
         TextAsset inkJson = Resources.Load<TextAsset>("test"); // 不带 .json
         story = new Story(inkJson.text);
