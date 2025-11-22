@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: "\u4F9B\u54C1"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u8D21\u54C1"
-  description: 
+  itemName: "\u8150\u70C2\u7684\u4F9B\u679C"
+  description: "\u76D8\u4E2D\u7684\u6C34\u679C\u65E9\u5DF2\u8150\u70C2\u5E72\u762A\uFF0C\u6563\u53D1\u51FA\u4EE4\u4EBA\u611F\u5230\u4E0D\u9002\u7684\u8150\u8D25\u6C14\u5473\u3002\u4F46\u5728\u5176\u4E2D\u51E0\u4E2A\u679C\u5B50\u9690\u853D\u7684\u80CC\u9762\u5374\u7559\u4E0B\u4E86\u4E00\u4E9B\u75D5\u8FF9\uFF0C\u660E\u663E\u662F\u4EBA\u7684\u9F7F\u75D5"
   icon: {fileID: 21300000, guid: 11bd2ae5e05980f4a91c247f3243063d, type: 3}
   category: 0
   stackable: 1

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
-  m_Name: "\u9999\u7089"
+  m_Name: "\u5408\u537A\u9152"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u9999\u7089"
+  itemName: "\u5408\u537A\u9152"
   description: 
-  icon: {fileID: 21300000, guid: fbde185976c34aa47bda55baab9e7828, type: 3}
+  icon: {fileID: 0}
   category: 0
   stackable: 1
   maxStack: 99

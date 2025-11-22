@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
-  m_Name: "\u51A5\u4E8B\u7EA2\u70DB"
+  m_Name: "\u7FFB\u7A97\u79BB\u5F00\u7684\u75D5\u8FF9"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u51A5\u4E8B\u7EA2\u70DB"
-  description: "\u767D\u4E8B\u6240\u7528\u7684\u7EA2\u70DB\uFF0C\u70DB\u4F53\u4E0A\u523B\u6709\u201C\u51A5\u201D\u5B57\u3002"
-  icon: {fileID: 21300000, guid: 888af31639b51b6469e9c8d9069bd476, type: 3}
+  itemName: "\u7FFB\u7A97\u79BB\u5F00\u7684\u75D5\u8FF9"
+  description: "\u7960\u5802\u89D2\u843D\u67D0\u6247\u7A97\uFF0C\u5C01\u6B7B\u5176\u7684\u6728\u6761\u53C8\u4ECE\u5185\u90E8\u5F3A\u884C\u64AC\u5F00\u7684\u7F1D\u9699\u3002\u7A97\u5916\u7684\u8349\u4E1B\u5448\u5012\u4F0F\u72B6\u6001\uFF0C\u5F62\u6210\u4E00\u6761\u6307\u5411\u9662\u5899\u7684\u75D5\u8FF9"
+  icon: {fileID: 0}
   category: 0
   stackable: 1
   maxStack: 99

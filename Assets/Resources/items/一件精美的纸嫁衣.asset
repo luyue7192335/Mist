@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
+  m_Name: "\u4E00\u4EF6\u7CBE\u7F8E\u7684\u7EB8\u5AC1\u8863"
+  m_EditorClassIdentifier: 
+  itemId: 
+  itemName: "\u4E00\u4EF6\u7CBE\u7F8E\u7684\u7EB8\u5AC1\u8863"
+  description: "\u7EB8\u5AC1\u8863\u505A\u5DE5\u6781\u5176\u7CBE\u5DE7\uFF0C\u901A\u4F53\u9C9C\u7EA2\u5E76\u7528\u91D1\u7EBF\u7EE3\u6EE1\u4E86\u5E76\u8482\u83B2\u7EB9\uFF0C\u5BD3\u610F\u65B0\u4EBA\u6C38\u7ED3\u540C\u5FC3\u3002\u7136\u800C\u80F8\u53E3\u5904\u4E00\u6735\u83B2\u82B1\u7684\u82B1\u74E3\u5374\u5448\u73B0\u51FA\u4E0D\u7965\u7684\u7126\u9ED1\u8272\u626D\u66F2\u7EB9\u8DEF\uFF0C\u4E5F\u8BB8\u662F\u88AB\u706B\u7130\u71CE\u8FC7\uFF0C\u53C8\u6216\u662F\u88AB\u4EC0\u4E48\u6C61\u79FD\u4E4B\u7269\u4FB5\u8680\u8FC7"
+  icon: {fileID: 0}
+  category: 0
+  stackable: 1
+  maxStack: 99
+  combineThreshold: 0
+  combineResultId: 
+  usableInBag: 0
+  deliverable: 1

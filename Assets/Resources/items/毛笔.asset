@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: "\u6BDB\u7B14"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u6BDB\u7B14"
+  itemName: "\u7EC6\u6BEB\u6BDB\u7B14"
   description: 
   icon: {fileID: 21300000, guid: 40c06d75d66f2ad4d848471040377c62, type: 3}
   category: 0

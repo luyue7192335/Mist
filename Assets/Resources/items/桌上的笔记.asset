@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
-  m_Name: "\u5B57\u8FF9\u6A21\u7CCA\u7684\u533B\u6848"
+  m_Name: "\u684C\u4E0A\u7684\u7B14\u8BB0"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u5B57\u8FF9\u6A21\u7CCA\u7684\u533B\u6848"
-  description: 
-  icon: {fileID: 21300000, guid: 74820b30d821bc545912be1362a2fae2, type: 3}
+  itemName: "\u684C\u4E0A\u7684\u7B14\u8BB0\uFF1A\u7279\u6B8A\u7684\u8FD8\u9B42\u4EEA\u5F0F"
+  description: "\u7279\u6B8A\u7684\u8FD8\u9B42\u4EEA\u5F0F\u9700\u8981\u5341\u516D\u4E2A\u6D3B\u796D\u3001\u4E8C\u5341\u4E94\u6735\u73AB\u7470\u3001\u4E09\u5341\u516D\u652F\u7EA2\u70DB\u3001\u56DB\u5341\u4E5D\u4E2A\u7EB8\u4EBA\uFF0C\u548C\u4E00\u4E2A\u5A92\u4ECB"
+  icon: {fileID: 0}
   category: 0
   stackable: 1
   maxStack: 99

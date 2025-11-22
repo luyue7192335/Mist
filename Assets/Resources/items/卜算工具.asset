@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
-  m_Name: "\u51A5\u4E8B\u7EA2\u70DB"
+  m_Name: "\u535C\u7B97\u5DE5\u5177"
   m_EditorClassIdentifier: 
   itemId: 
-  itemName: "\u51A5\u4E8B\u7EA2\u70DB"
-  description: "\u767D\u4E8B\u6240\u7528\u7684\u7EA2\u70DB\uFF0C\u70DB\u4F53\u4E0A\u523B\u6709\u201C\u51A5\u201D\u5B57\u3002"
-  icon: {fileID: 21300000, guid: 888af31639b51b6469e9c8d9069bd476, type: 3}
+  itemName: "\u535C\u7B97\u5DE5\u5177"
+  description: "\u7237\u7237\u7684\u670B\u53CB\u7528\u6765\u535C\u7B97\u7684\u9053\u5177\uFF0C\u6CA1\u600E\u4E48\u7528\u8FC7\uFF0C\u88AB\u968F\u610F\u4E22\u5728\u684C\u5B50\u4E0A"
+  icon: {fileID: 0}
   category: 0
   stackable: 1
   maxStack: 99
