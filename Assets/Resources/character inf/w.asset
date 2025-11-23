@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd0e498c9ae96ff4db5d6631b35d8a43, type: 3}
+  m_Name: w
+  m_EditorClassIdentifier: 
+  charId: w
+  displayName: "\u6D41\u6D6A\u8005"
+  portrait: {fileID: 21300000, guid: dac6b2b0451fba74bb9b51bd5eadd40c, type: 3}
+  intro: "\u7237\u7237\u5236\u9020\u7684\u4EBA\u5076\n"
+  stories:
+  - entryId: w1
+    lockedHint: "\u65E0"
+    content: "\u5177\u4F53\u6545\u4E8B"
+    conditions:
+    - type: 0
+      key: 
+      value: 0
