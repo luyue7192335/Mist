@@ -11,6 +11,8 @@ public class CharacterData : ScriptableObject
     [TextArea] public string intro;
 
     public List<CharacterStoryEntry> stories = new();
+
+    public Sprite leftBarSprite;
 }
 
 [Serializable]

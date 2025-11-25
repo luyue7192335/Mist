@@ -319,7 +319,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   titleText: {fileID: 6964855323351161487}
   bodyText: {fileID: 104686056724057538}
-  lockGO: {fileID: 498007808678336268}
+  lockedGroup: {fileID: 498007808678336268}
+  lockedHintText: {fileID: 0}
+  layoutElement: {fileID: 0}
 --- !u!1 &8541086152192389382
 GameObject:
   m_ObjectHideFlags: 0
