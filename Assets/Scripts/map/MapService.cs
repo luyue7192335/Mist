@@ -76,6 +76,8 @@ public static MapService Instance { get; private set; }
 
         // 7) 放置玩家到出生点
         PlacePlayerAtSpawn(spawnPoint);
+        //FindObjectOfType<CameraBoundsBinder>()?.RefreshBinding();
+
 
         // // 8) 绑定相机边界（CameraBounds 上的 PolygonCollider2D）
         // var vcam = FindFirstObjectByType<CinemachineVirtualCamera>();
