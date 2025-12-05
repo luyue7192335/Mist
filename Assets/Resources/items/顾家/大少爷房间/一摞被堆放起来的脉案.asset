@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u4E00\u645E\u88AB\u5806\u653E\u8D77\u6765\u7684\u8109\u6848"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Maian
   itemName: "\u4E00\u645E\u88AB\u5806\u653E\u8D77\u6765\u7684\u8109\u6848"
   description: "\u91CC\u9762\u6EE1\u6EE1\u5F53\u5F53\u5199\u7740\u8FD9\u4E9B\u5E74\u5F1F\u5F1F\u5C31\u533B\u7684\u8109\u6848\u548C\u8349\u836F\u914D\u65B9"
   icon: {fileID: 0}

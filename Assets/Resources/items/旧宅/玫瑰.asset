@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u73AB\u7470"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Meigui
   itemName: "\u73AB\u7470"
   description: "\u5DF2\u7ECF\u5E72\u67AF\uFF0C\u4F46\u8FD8\u5E26\u7740\u6DE1\u6DE1\u7684\u9999\u5473"
   icon: {fileID: 0}

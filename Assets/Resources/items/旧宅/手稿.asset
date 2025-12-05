@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u624B\u7A3F"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Shougao
   itemName: "\u624B\u7A3F"
   description: "\u7531\u7237\u7237\u7ED8\u5236\u7684\u624B\u7A3F\uFF0C\u753B\u4E0A\u7684\u4EBA\u6709\u7740\u548C\u6D41\u6D6A\u8005\u76F8\u540C\u7684\u9762\u5BB9"
   icon: {fileID: 0}

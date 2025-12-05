@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u6CA1\u6709\u7167\u660E\u7684\u8721\u70DB"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Lazhu
   itemName: "\u6CA1\u6709\u7167\u660E\u7684\u8721\u70DB"
   description: 
   icon: {fileID: 21300000, guid: 1829efdcb78bbd24fa26e7957340792c, type: 3}

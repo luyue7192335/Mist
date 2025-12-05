@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u4E00\u5E45\u5C0F\u5B69\u5B50\u7684\u6D82\u9E26"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Tuya
   itemName: "\u4E00\u5E45\u5C0F\u5B69\u5B50\u7684\u6D82\u9E26"
   description: "\u52C9\u5F3A\u770B\u51FA\u662F\u4E00\u4E2A\u8001\u4EBA\u7275\u7740\u5C0F\u5B69\u7684\u624B\uFF0C\u8FDC\u5904\u8FD8\u6709\u4E00\u4E2A\u5C0F\u5C0F\u7684\u84DD\u8272\u8EAB\u5F71"
   icon: {fileID: 0}

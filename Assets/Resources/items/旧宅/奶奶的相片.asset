@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u5976\u5976\u7684\u76F8\u7247"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Xiangpian
   itemName: "\u5976\u5976\u7684\u76F8\u7247"
   description: "\u5DF2\u7ECF\u6CDB\u9EC4\u892A\u8272\u4E86"
   icon: {fileID: 0}

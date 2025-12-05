@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u7EC6\u6BEB\u6BDB\u7B14"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Maobi
   itemName: "\u7EC6\u6BEB\u6BDB\u7B14"
   description: 
   icon: {fileID: 21300000, guid: 40c06d75d66f2ad4d848471040377c62, type: 3}

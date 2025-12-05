@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u6BC1\u574F\u7684\u4F5B\u50CF"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: FoXiang
   itemName: "\u6BC1\u574F\u7684\u4F5B\u50CF"
   description: "\u6B8B\u9AB8\u5728\u5468\u56F4\u4E03\u96F6\u516B\u788E\uFF0C\u6709\u4EBA\u4E3A\u7834\u574F\u7684\u75D5\u8FF9"
   icon: {fileID: 0}

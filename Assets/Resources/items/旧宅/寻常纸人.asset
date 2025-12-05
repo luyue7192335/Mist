@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u5BFB\u5E38\u7EB8\u4EBA"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: XCZhiren
   itemName: "\u5BFB\u5E38\u7EB8\u4EBA"
   description: "\u7237\u7237\u4EB2\u624B\u624E\u7684\u7EB8\u4EBA\uFF0C\u5BB6\u91CC\u5E76\u6CA1\u6709\u6D89\u53CA\u6BA1\u846C\u884C\u4E1A\uFF0C\u4E3A\u4EC0\u4E48\uFF1F\n"
   icon: {fileID: 0}

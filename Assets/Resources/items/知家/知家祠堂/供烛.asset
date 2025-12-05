@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u4F9B\u70DB"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Gongzhu
   itemName: "\u4F9B\u70DB"
   description: 
   icon: {fileID: 21300000, guid: 3a4c83e4ebdfe704f99756d60fa1b474, type: 3}

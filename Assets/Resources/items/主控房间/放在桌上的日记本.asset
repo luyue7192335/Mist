@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u653E\u5728\u684C\u4E0A\u7684\u65E5\u8BB0\u672C"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Rijiben
   itemName: "\u653E\u5728\u684C\u4E0A\u7684\u65E5\u8BB0\u672C"
   description: 
   icon: {fileID: 0}

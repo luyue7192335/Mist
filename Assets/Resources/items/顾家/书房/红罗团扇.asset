@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u7EA2\u7F57\u56E2\u6247"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: HLTuanshan
   itemName: "\u7EA2\u7F57\u56E2\u6247"
   description: "\u8695\u4E1D\u5236\u6210\u7684\u56E2\u6247\uFF0C\u5341\u5206\u7CBE\u81F4\u3002"
   icon: {fileID: 21300000, guid: c13d5d53e57ef684293a7a5a70410322, type: 3}

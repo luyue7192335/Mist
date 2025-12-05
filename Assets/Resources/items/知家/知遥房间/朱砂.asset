@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u6731\u7802"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Zhusha
   itemName: "\u6731\u7802"
   description: 
   icon: {fileID: 21300000, guid: fc37c6f4ebef4d34397863b9018d4ff1, type: 3}

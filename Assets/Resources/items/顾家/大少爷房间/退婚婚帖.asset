@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u9000\u5A5A\u5A5A\u5E16"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: THHuntie
   itemName: "\u9000\u5A5A\u5A5A\u5E16"
   description: "\u8FD8\u6CA1\u5199\u5B8C\uFF0C\u6709\u4E9B\u5B57\u8FF9\u88AB\u6C34\u6E0D\u6655\u5F00"
   icon: {fileID: 0}

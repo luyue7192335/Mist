@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u7E41\u6742\u7684\u8D26\u672C"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: Zhangben
   itemName: "\u7E41\u6742\u7684\u8D26\u672C"
   description: "\u987E\u5BB6\u8D26\u672C"
   icon: {fileID: 0}

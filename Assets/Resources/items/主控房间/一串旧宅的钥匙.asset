@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
   m_Name: "\u4E00\u4E32\u65E7\u5B85\u7684\u94A5\u5319"
   m_EditorClassIdentifier: 
-  itemId: 
+  itemId: JiuzhaiYaoshi
   itemName: "\u4E00\u4E32\u65E7\u5B85\u7684\u94A5\u5319"
   description: 
   icon: {fileID: 0}
