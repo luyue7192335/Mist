@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bac76892cb9b5c45b537129a9310b7e, type: 3}
+  m_Name: "\u83E9\u63D0\u6811"
+  m_EditorClassIdentifier: 
+  itemId: PTShu
+  itemName: "\u83E9\u63D0\u6811"
+  description: "\u66FE\u7ECF\u679D\u53F6\u7E41\u591A\u7684\u83E9\u63D0\u6811\uFF0C\u5982\u4ECA\u53EA\u5269\u4E0B\u4E00\u4E2A\u5E72\u67AF\u7684\u6811\u6869"
+  icon: {fileID: 0}
+  category: 0
+  stackable: 1
+  maxStack: 99
+  combineThreshold: 0
+  combineResultId: 
+  usableInBag: 0
+  deliverable: 1
