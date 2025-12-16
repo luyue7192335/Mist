@@ -11,7 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/test/Map1.unity
     guid: bf852ffe09bd51b419cdafc4a9388dcd
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/StoryText.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
@@ -23,4 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/map_c1.2.unity
     guid: 8d63bdb8fdcfa404caa377c12d407404
+  - enabled: 1
+    path: Assets/Scenes/map_c1.3.unity
+    guid: 3ff38966a1d80f34e87c340a305aaa7e
+  - enabled: 1
+    path: Assets/Scenes/map_c1.8.unity
+    guid: ebf29ae70e5a1b14580e9870c81c49fb
+  - enabled: 1
+    path: Assets/Scenes/map_c1.4.unity
+    guid: a341ac86eea545240aad1e06e0206f9e
+  - enabled: 1
+    path: Assets/Scenes/map_c1.5.unity
+    guid: 229ead0fe6ff0654981f7c5b09e2258b
+  - enabled: 1
+    path: Assets/Scenes/map_c1.6.unity
+    guid: d14bddd0f62541d4aa1704ddbf65da87
+  - enabled: 1
+    path: Assets/Scenes/map_c1.7.unity
+    guid: b94a37963b7704e48ae392e16ff4280f
   m_configObjects: {}
