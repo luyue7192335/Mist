@@ -894,7 +894,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allItems:
-  - {fileID: 11400000, guid: 21028eb4a24c3ec44ab68d776ef26c20, type: 2}
+  - {fileID: 11400000, guid: 23ce8bcde5b8e634f834d13375da232e, type: 2}
   - {fileID: 11400000, guid: a1a75e7172733214cab1cb34567b7a65, type: 2}
 --- !u!114 &50916556
 MonoBehaviour:
@@ -971,7 +971,9 @@ MonoBehaviour:
   sfxClips:
   - key: test2
     clip: {fileID: 8300000, guid: bdd9d7b0375477e43ae4e65bbe31b231, type: 3}
-  voiceClips: []
+  voiceClips:
+  - key: 
+    clip: {fileID: 8300000, guid: be1111e9deebd6248b12089f8ac1f4de, type: 3}
   bgmSrc: {fileID: 1916064391}
   voiceSrc: {fileID: 1618922070}
   sfxPrefab: {fileID: 170263433}
